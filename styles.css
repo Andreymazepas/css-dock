@@ -23,6 +23,8 @@ body {
   transform: translateX(-50%);
   bottom: 150px;
   min-width: 50px;
+  max-width: 550px;
+  width: 95%;
 }
 
 .dock > div {
@@ -39,7 +41,8 @@ body {
 
 .dock-program > img {
   transition: all 0.3s ease;
-  height: 50px;
+  height: auto;
+  max-width: 100%;
 }
 
 .dock-program:hover {
@@ -67,19 +70,34 @@ body {
   justify-content: space-between;
 }
 
-.taskbar > button {
+.taskbar-buttons {
+  display: flex;
+  height: 100%;
+  justify-content: start;
+}
+
+.taskbar button {
   min-width: 0;
   display: flex;
   align-items: center;
   font-weight: bold;
   height: 14px;
-  width: 60px;
+  width: 130px;
   padding-left: 4px;
 }
 
-.taskbar > button > img {
+.taskbar button:first-child {
+  margin-right: 4px;
+  width: 60px;
+}
+
+.taskbar button > img {
+  height: 14px;
+  margin-right: 4px;
+}
+
+.taskbar button:first-child > img {
   height: 20px;
-  margin-right: 2px;
 }
 
 .clock {
@@ -87,9 +105,47 @@ body {
   padding: 4px;
 }
 
-.controls {
+#main-window {
   position: absolute;
-  top: 150px;
-  left: 60px;
-  width: 400px;
+  top: 35%;
+  left: 10%;
+  width: 80%;
+}
+
+#links-window {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  width: 40%;
+}
+
+.title-bar-text > img {
+  height: 12px;
+  margin-right: 4px;
+}
+
+@keyframes dockBounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.selected {
+  animation: dockBounce 1s 3;
+}
+
+@media screen and (min-width: 600px) {
+  #main-window {
+    width: 400px;
+  }
+
+  #links-window {
+    width: 220px;
+  }
 }
